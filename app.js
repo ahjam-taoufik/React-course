@@ -1,13 +1,58 @@
-// function Compose(props){return <h1>Welcome {props.name}</h1>}
-// ReactDOM.render(<Compose name='ali'/>,document.querySelector('#app'))
 
-// function Compose(props){return <h1>Welcome {props.name}  </h1>}
-// ReactDOM.render(<div><Compose name='ali'/><Compose name="taoufik" /><Compose name="aicha" /></div>,document.querySelector('#app'))
+// class Compose extends React.Component{
+//     render(){
+//        // console.log(this.props);
+//         return <h1>Welcome {this.props.name}</h1>
+//     }
+// }
+
+// ReactDOM.render(
+//     <div>
+//        <Compose name='ali'> to your class</Compose>
+//        <Compose name='mostapha'> to your class</Compose>
+//     </div>
+// ,document.querySelector('#app'))
 
 
 
-function Compose({name,children}){return <h1>Welcome {name} {children}  </h1>}
+//==========================================================================
+
+// class Compose extends React.Component{
+//     render(){
+// =====// console.log(this.props);
+//         return <h1>Welcome {this.props.name}</h1>
+//     }
+// }
+// function Main(){
+//     return   <div>
+//        <Compose name='ali'> to your class</Compose>
+//        <Compose name='mostapha'> to your class</Compose>
+//     </div>
+// }
+// ReactDOM.render(
+//       <Main/>
+// ,document.querySelector('#app'))
+
+//===============================================================
+
+
+
+class Compose extends React.Component{
+    render(){
+       // console.log(this.props);
+        return <h1>Welcome {this.props.name}</h1>
+    }
+}
+
+
+function Main(){
+    return  <div>
+           <Compose name='ali'> to your class</Compose>
+           <Compose name='mostapha'> to your class</Compose>
+          </div>
+}
+
 ReactDOM.render(
-    <Compose name='ali'> to your class</Compose>
+      <Main/>
 ,document.querySelector('#app'))
 
