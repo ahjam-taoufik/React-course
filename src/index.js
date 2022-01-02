@@ -1,21 +1,8 @@
-import React, { useState } from 'react';
+
 import ReactDOM from 'react-dom';
+import Compter from './app'
 
-function useIncrement(initial, step){
-      const [state, setstate] = useState(initial)
-      function incr(){
-         setstate(e=>e+step)
-      }
-    return [state , incr]  
-}
 
-function Compter(){
-   const [state, click] = useIncrement(100,5)
-    return <div>       
-               <h1>{ state}</h1>
-              <button onClick={click}>Incrementer </button>
-           </div>  
-}
 
 ReactDOM.render(
      
