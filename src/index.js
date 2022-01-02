@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
+function useIncrement(initial, step){
+      const [state, setstate] = useState(initial)
+      function incr(){
+         setstate(e=>e+step)
+      }
+    return [state , incr]  
+}
+
 function Compter(){
-   const [state, setstate] = useState(0)
-   
-    function click(event){
-       event.preventDefault()
-      setstate(e=>e+1)
-   }
-    return <div>
-               <h1>{state}</h1>
+   const [state, click] = useIncrement(100,5)
+    return <div>       
+               <h1>{ state}</h1>
               <button onClick={click}>Incrementer </button>
-             
-              <hr/>
            </div>  
 }
 
