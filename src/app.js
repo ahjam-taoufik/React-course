@@ -5,17 +5,15 @@ import {useIncrement,useIncrement2} from './helper'
  function Compter(){
 
    const [state, click] = useIncrement(0,1)
-
-        useEffect(() => {
-            setInterval(()=>{
+        useEffect(() => {  
+          const time=setInterval(()=>{
+                console.log('salam');
                 click()
             },1000)
-           
+            return ()=>{
+                clearInterval(time)
+            }
         },[])
-
-         useEffect(() => {
-             document.title="compteur "+state
-         },[state])
 
     return <div>       
                <h1>{ state}</h1>

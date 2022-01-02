@@ -1,15 +1,25 @@
 
-import ReactDOM from 'react-dom';
+import {render} from 'react-dom';
 import Compter from './app'
 
 
 
-ReactDOM.render(
-     
+setTimeout(()=>{
+  render(   
+    <div> 
+      salam
+    </div>
+   ,
+   document.getElementById('root')
+ );
+ 
+},5000)
+
+
+render(   
    <div> 
      <Compter/>
    </div>
   ,
   document.getElementById('root')
 );
-
