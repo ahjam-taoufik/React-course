@@ -2,22 +2,30 @@
 import {render} from 'react-dom';
 import React, { useEffect, useState } from 'react'
 
+function useLoadData(url){
+  const [state, setstate] = useState({items:[],loading:true})
+
+  useEffect(() => {
+    (async function () {
+         const res=await fetch(url)
+         const data=await res.json()
+         if (data) {  
+             setstate({
+                 items:data,
+                 loading:false
+             })
+         }    
+    })()        
+}, [])
+return [state.items,state.loading]
+}
+
 
 function App(){
-         const [todos, setTodos] = useState([])
-         const [isLoading, setisLoading] = useState(true)
-          useEffect(() => {
-               (async function () {
-                    const res=await fetch('https://jsonplaceholder.typicode.com/todos?_limit=200')
-                    const data=await res.json()
-                    if (data) {  
-                      setTodos(data)
-                    }
-                    setisLoading(false)
-               })()        
-          }, [])
+            const url='https://jsonplaceholder.typicode.com/todos?_limit=200'
+            const [todos,isloading]=useLoadData(url)
 
-    if (isLoading.ok) {
+    if (isloading) {
       return <h3>Loading .........</h3>
     }     
     return <div>
