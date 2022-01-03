@@ -1,38 +1,24 @@
 import {render} from 'react-dom';
-import React, { useEffect, useRef, useState }  from 'react'
+import React, { useCallback, useState } from 'react'
+import Button from './Button';
+
+//=====================================================================
+
 
 function App(){
-  const [FName, setFName] = useState('');
-  const [LName, setLName] = useState('');
+  const [count , setCount]=useState(0)
 
-  const  refFName = useRef()
-   const refLName = useRef()
-   const EnterKey = useRef()
-   function run(){
-     console.log(FName , LName);
-   }
+  function increment(){
+    setCount(count=>count+1)
+  }
 
-   useEffect(() => {
-     refFName.current.focus()
-    })
-    
-    function FirstkKey(e){
-      if(e.key=='Enter'){
-        refLName.current.focus()   
-       }
-    }
-
-    function LastKey(e){
-      if(e.key=='Enter'){
-        EnterKey.current.focus()   
-       }
-    }
-
-  return <div>
-            <input onKeyDown={FirstkKey} ref={refFName} value={FName} onChange={(e)=>setFName(e.target.value)} type='text' placeholder='your Fname'    />
-            <input onKeyDown={LastKey}  ref={refLName} value={LName} onChange={(e)=>setLName(e.target.value)} type='text' placeholder='your Lname'    />
-            <button ref={EnterKey} onClick={run}>Click Me</button> 
-        </div>
+  const incr= useCallback(increment,[])
+     return(
+       <div>
+          count : {count}
+         <Button onClick={incr}  />
+       </div>
+     )
 }
 
 
