@@ -1,41 +1,39 @@
-
 import {render} from 'react-dom';
-import React, { useEffect, useState } from 'react'
-
-function useLoadData(url){
-  const [state, setstate] = useState({items:[],loading:true})
-
-  useEffect(() => {
-    (async function () {
-         const res=await fetch(url)
-         const data=await res.json()
-         if (data) {  
-             setstate({
-                 items:data,
-                 loading:false
-             })
-         }    
-    })()        
-}, [])
-return [state.items,state.loading]
-}
-
+import React, { useEffect, useRef, useState }  from 'react'
 
 function App(){
-            const url='https://jsonplaceholder.typicode.com/todos?_limit=200'
-            const [todos,isloading]=useLoadData(url)
+  const [FName, setFName] = useState('');
+  const [LName, setLName] = useState('');
 
-    if (isloading) {
-      return <h3>Loading .........</h3>
-    }     
-    return <div>
-                <h2>List Todos</h2>
-              <ul>
-                {todos.map(t=><li key={t.id}>{t.title}</li>)} 
-              </ul>
-           </div>
+  const  refFName = useRef()
+   const refLName = useRef()
+   const EnterKey = useRef()
+   function run(){
+     console.log(FName , LName);
+   }
+
+   useEffect(() => {
+     refFName.current.focus()
+    })
+    
+    function FirstkKey(e){
+      if(e.key=='Enter'){
+        refLName.current.focus()   
+       }
+    }
+
+    function LastKey(e){
+      if(e.key=='Enter'){
+        EnterKey.current.focus()   
+       }
+    }
+
+  return <div>
+            <input onKeyDown={FirstkKey} ref={refFName} value={FName} onChange={(e)=>setFName(e.target.value)} type='text' placeholder='your Fname'    />
+            <input onKeyDown={LastKey}  ref={refLName} value={LName} onChange={(e)=>setLName(e.target.value)} type='text' placeholder='your Lname'    />
+            <button ref={EnterKey} onClick={run}>Click Me</button> 
+        </div>
 }
-
 
 
 render(<App/>,document.getElementById('root'));
