@@ -3,6 +3,7 @@ import Navbar from './coponents/Navbar';
 import Booklist from './coponents/Booklist';
 import './style.css'
 import ThemeContextProvider from './context/ThemeContext';
+import ThemToggle from './coponents/ThemeToggle';
 
 
 
@@ -12,6 +13,7 @@ function App(){
           <ThemeContextProvider>
               <Navbar/>
               <Booklist/>
+              <ThemToggle/>
           </ThemeContextProvider>
             
          </div>
