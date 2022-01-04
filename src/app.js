@@ -4,8 +4,7 @@ import SongList from './coponents/SongList';
 function App(){
   return(
       <div className='App'>
-         <SongList></SongList>
-      
+         <SongList/>
       </div>
          ) 
 
