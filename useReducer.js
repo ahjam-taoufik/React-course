@@ -7,9 +7,9 @@ const initialState={
 const reducer=(state,action)=>{
      switch (action.type) {
          case 'increment':
-             return {count:state.count+1};
+             return {count:state.count + action.value};
          case 'decrement':
-             return  {count:state.count-1};
+             return  {count:state.count - action.value};
          case 'init':
             return initialState;
 
@@ -26,8 +26,14 @@ function CounterReducer() {
 
         <div>
             <p>{state.count}</p>
-           <button onClick={()=>dispatch({type:'increment'})}>increment</button>
-           <button onClick={()=>dispatch({type:'decrement'})}>decrement</button>
+           <button onClick={()=>dispatch({type:'increment',value:1})}>increment1</button>
+           <button onClick={()=>dispatch({type:'decrement',value:1})}>decrement1</button>
+
+           <button onClick={()=>dispatch({type:'increment',value:4})}>increment4</button>
+           <button onClick={()=>dispatch({type:'decrement',value:4})}>decrement4</button>
+
+
+
            <button onClick={()=>dispatch({type:'init'})}>initalisé</button>
         </div>
     )
